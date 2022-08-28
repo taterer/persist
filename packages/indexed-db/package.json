@@ -1,6 +1,6 @@
 {
   "name": "@taterer/persist-indexed-db",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Persistence in the browser's IndexedDB",
   "scripts": {
     "build": "parcel build"

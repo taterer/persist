@@ -4,7 +4,7 @@ type Schema = {
   name: string
 }[]
 
-export async function memoryFactory<T extends string> (schema: Schema): Promise<Persistence<any & Persistable, T>> {
+export async function memoryFactory<EntityType extends string> (schema: Schema): Promise<Persistence<any & Persistable, EntityType>> {
   const database: { [key: string]: Map<string, object & { id: string }> } = {}
 
   for (const table of schema) {
