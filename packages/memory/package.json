@@ -1,7 +1,7 @@
 {
-  "name": "@taterer/persist",
+  "name": "@taterer/persist-memory",
   "version": "1.0.0",
-  "description": "Reactive Extensions with JSX (UI without React)",
+  "description": "Persistence in memory",
   "scripts": {
     "build": "parcel build"
   },
@@ -16,6 +16,7 @@
     "url": "git+https://github.com/taterer/persist.git"
   },
   "keywords": [
+    "memory",
     "persistence",
     "database",
     "functional",
@@ -30,5 +31,7 @@
   "peerDependencies": {
     "rxjs": "^7"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@taterer/persist": "^1.0.0"
+  }
 }

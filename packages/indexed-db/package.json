@@ -1,0 +1,36 @@
+{
+  "name": "@taterer/persist-indexed-db",
+  "version": "1.0.0",
+  "description": "Persistence in the browser's IndexedDB",
+  "scripts": {
+    "build": "parcel build"
+  },
+  "main": "index.ts",
+  "author": "Taylor McKay",
+  "bugs": {
+    "url": "https://github.com/taterer/persist/issues"
+  },
+  "homepage": "https://taterer.github.io/persist/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taterer/persist.git"
+  },
+  "keywords": [
+    "persistence",
+    "database",
+    "functional",
+    "reactive",
+    "rxjs"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  },
+  "peerDependencies": {
+    "rxjs": "^7"
+  },
+  "dependencies": {
+    "@taterer/persist": "^1.0.0"
+  }
+}
