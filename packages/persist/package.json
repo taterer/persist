@@ -1,11 +1,12 @@
 {
   "name": "@taterer/persist",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Persistence in a functional world",
   "scripts": {
     "build": "parcel build"
   },
-  "main": "index.ts",
+  "source": "index.ts",
+  "main": "dist/index.js",
   "author": "Taylor McKay",
   "bugs": {
     "url": "https://github.com/taterer/persist/issues"
@@ -24,11 +25,14 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "parcel": "^2.7.0",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.3"
   },
   "peerDependencies": {
     "rxjs": "^7"
   },
-  "dependencies": {}
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
 }
