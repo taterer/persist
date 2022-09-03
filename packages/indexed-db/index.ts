@@ -14,7 +14,7 @@ type Schema = {
  *  put: (tableName: string, key: { id: string }, value: {}) => {}
  * }} A document database
  */
-export function indexedDbFactory<EntityType extends string> (databaseName: string, version: number, schema: Schema): Promise<Persistence<any & Persistable, EntityType>> {
+export function indexedDBFactory<EntityType extends string> (databaseName: string, version: number, schema: Schema): Promise<Persistence<any & Persistable, EntityType>> {
   return new Promise((resolve, reject) => {
     if (!('indexedDB' in window)) {
       reject(new Error('This browser doesn\'t support IndexedDB'))
