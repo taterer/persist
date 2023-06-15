@@ -781,10 +781,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@taterer/persist@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@taterer/persist/-/persist-1.0.3.tgz#31ec6b06b9f72672fe6e82d9c4704d11ca555833"
-  integrity sha512-uJtSbRpf6yeMqtbGsjAyEfOhXdZuNTglMTkJSvMN1X7NGTk/ebuCrge5aW5Mt8hrJdB2HUhiTbrMBUWBLVXdhg==
+"@taterer/persist@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@taterer/persist/-/persist-2.0.0.tgz#6fb5526929929c45cdd8ba148396367a37843ca5"
+  integrity sha512-IKWEUnitGVT6ARkrEciQmyg4GnzJAxqPkEV90OoPp4pFRAHqWgeIDRaZvOVirL+owqbExg/8iT75xPDrzhRuxw==
   dependencies:
     uuid "^8.3.2"
 

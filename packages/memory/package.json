@@ -34,6 +34,6 @@
     "rxjs": "^7"
   },
   "dependencies": {
-    "@taterer/persist": "^1.0.3"
+    "@taterer/persist": "^2.0.0"
   }
 }

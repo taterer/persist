@@ -1,4 +1,4 @@
-import { concatMap, map } from 'rxjs';
+import { concatMap, map, Observable, ObservableInput, take, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
 export type Persistable = {
@@ -34,4 +34,23 @@ export function concatMapRemove<Entity, PersistenceEntityType>(entity: Persisten
   return concatMap<[Persistable, Persistence<Entity, PersistenceEntityType>], any>(([value, persistence]) =>
     persistence.remove(entity, value)
   );
+}
+
+export function entityGetFactory<Entity, PersistenceEntityType>(
+  persistence$: Observable<Persistence<Persistable, PersistenceEntityType>>,
+  entity: PersistenceEntityType
+): (id: string) => Promise<Entity> {
+  return function (id: string): Promise<Entity> {
+    return new Promise((resolve) => {
+      persistence$
+        .pipe(
+          concatMap<Persistence<Persistable, PersistenceEntityType>, ObservableInput<Entity>>(
+            (db) => db.get(entity, id) as Promise<Entity>
+          ),
+          tap<Entity>((record) => resolve(record)),
+          take(1)
+        )
+        .subscribe();
+    });
+  };
 }
