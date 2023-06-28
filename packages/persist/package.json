@@ -1,6 +1,6 @@
 {
   "name": "@taterer/persist",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Persistence in a functional world",
   "scripts": {
     "build": "parcel build"

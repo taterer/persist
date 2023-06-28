@@ -1,4 +1,4 @@
-import { concatMap, map, Observable, ObservableInput, take, tap } from 'rxjs';
+import { concatMap, filter, map, mergeWith, Observable, ObservableInput, take, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
 export type Persistable = {
@@ -38,19 +38,43 @@ export function concatMapRemove<Entity, PersistenceEntityType>(entity: Persisten
 
 export function entityGetFactory<Entity, PersistenceEntityType>(
   persistence$: Observable<Persistence<Persistable, PersistenceEntityType>>,
-  entity: PersistenceEntityType
+  entityType: PersistenceEntityType
 ): (id: string) => Promise<Entity> {
   return function (id: string): Promise<Entity> {
     return new Promise((resolve) => {
       persistence$
         .pipe(
           concatMap<Persistence<Persistable, PersistenceEntityType>, ObservableInput<Entity>>(
-            (db) => db.get(entity, id) as Promise<Entity>
+            (db) => db.get(entityType, id) as Promise<Entity>
           ),
-          tap<Entity>((record) => resolve(record)),
           take(1)
         )
-        .subscribe();
+        .subscribe(entity => {
+          resolve(entity);
+        });
+    });
+  };
+}
+
+export function entityGetWaitForItFactory<Entity extends Persistable, PersistenceEntityType>(
+  persistence$: Observable<Persistence<Persistable, PersistenceEntityType>>,
+  entityType: PersistenceEntityType,
+  entity$: Observable<Entity>
+): (id: string) => Promise<Entity> {
+  return function (id: string): Promise<Entity> {
+    return new Promise((resolve) => {
+      persistence$
+        .pipe(
+          concatMap<Persistence<Persistable, PersistenceEntityType>, ObservableInput<Entity>>(
+            (db) => db.get(entityType, id) as Promise<Entity>
+          ),
+          mergeWith(entity$),
+          filter(i => i?.id === id),
+          take(1)
+        )
+        .subscribe(entity => {
+          resolve(entity);
+        });
     });
   };
 }
